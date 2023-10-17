@@ -1,0 +1,14 @@
+﻿@page
+@model affNomPage
+@{
+    ViewData["Title"] = "Affiche le nom de l'utilisateur";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>@User.Identity?.Name</p>
+<p>Vous pouvez rajouter des informations sur votre compte</p>
+<p>@Model.CurrentUser.LastName</p>
+<form method="post">
+    <input name="lastname" value="@Model.CurrentUser.LastName"/>
+    <input type="submit" value="Modifier" class="btn btn-primary" />
+</form>

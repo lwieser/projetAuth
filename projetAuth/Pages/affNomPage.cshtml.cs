@@ -9,7 +9,7 @@ using projetAuth.Data;
 
 namespace projetAuth.Pages
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class affNomPage : PageModel
     {
         private UserManager<MyUser> _userManager;

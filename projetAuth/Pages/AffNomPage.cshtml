@@ -10,6 +10,6 @@
 <p>@Model.CurrentUser.LastName</p>
 <form method="post">
     <input name="lastname" value="@Model.CurrentUser.LastName"/>
-    <input type="checkbox" name="isAdmin"/>
+    @Html.CheckBox("isAdmin", User.IsInRole("Admin"))
     <input type="submit" value="Modifier" class="btn btn-primary" />
 </form>

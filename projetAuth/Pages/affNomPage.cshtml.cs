@@ -26,6 +26,7 @@ namespace projetAuth.Pages
         public void OnGet()
         { 
             SetUser();
+            
         }
 
         public async Task<IActionResult> OnPost(MyUser formUser)
@@ -40,7 +41,7 @@ namespace projetAuth.Pages
             }
             else
             {
-                _userManager.RemoveFromRoleAsync(CurrentUser, "Admin");
+                await _userManager.RemoveFromRoleAsync(CurrentUser, "Admin");
             }
             CurrentUser.LastName = formUser.LastName;
             _context.Users.Attach(CurrentUser).State = EntityState.Modified;
@@ -53,6 +54,7 @@ namespace projetAuth.Pages
         {
             var userEmail = HttpContext.User.Identity.Name;
             var currentUser = _userManager.Users.FirstOrDefault(x => x.Email == userEmail);
+            TempData["isAdmin"] = HttpContext.User.IsInRole("Admin") ? "checked" : "";
             CurrentUser = currentUser;
         }
     }
